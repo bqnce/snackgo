@@ -1,4 +1,3 @@
-// src/types/index.ts
 export interface InventoryItem {
   uniqueId: any;
   _id: string;
@@ -39,6 +38,7 @@ export interface Order {
   createdAt: Date;
   pickupCode: string;
   pickupTime: Date;
+  userId: string;
 }
 
 

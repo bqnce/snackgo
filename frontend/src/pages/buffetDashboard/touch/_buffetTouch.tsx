@@ -1,5 +1,3 @@
-// src/components/BuffetTouch.tsx
-
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -7,7 +5,7 @@ import OrdersPanel from "./_ordersPanel";
 import InventoryPanel from "./_inventoryPanel";
 import { Buffet, InventoryItem, Order } from "../../../types";
 
-const NEW_ORDER_THRESHOLD_MS = 60 * 1000; // 60 seconds
+const NEW_ORDER_THRESHOLD_MS = 60 * 1000;
 
 export const generatePickupCode = (): string => {
   const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -17,9 +15,7 @@ export const generatePickupCode = (): string => {
   return `${letter1}${letter2}${number}`;
 };
 
-
 const BuffetTouch = () => {
-  // --- State ---
   const [buffet, setBuffet] = useState<Buffet | null>(null);
   const [inventory, setInventory] = useState<InventoryItem[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
@@ -28,7 +24,6 @@ const BuffetTouch = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const navigate = useNavigate();
 
-  // --- Data Fetching ---
   const fetchBuffetData = async () => {
     const token = localStorage.getItem("accessToken");
     if (!token) {
@@ -96,7 +91,6 @@ const BuffetTouch = () => {
     );
   };
 
-  // --- Effects ---
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentTime(new Date());
@@ -148,8 +142,6 @@ const BuffetTouch = () => {
     fetchBuffetData();
   }, []);
 
-  // --- Render the Child Components ---
-  // Pass necessary props to the panels.
   return (
     <div className="h-screen w-screen flex flex-col bg-gray-100 font-sans">
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4 p-4 overflow-hidden">

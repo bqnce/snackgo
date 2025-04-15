@@ -9,7 +9,8 @@ const orderSchema = new mongoose.Schema({
     },
     createdAt: { type: Date, default: Date.now },
     pickupCode: { type: String, required: true },
-    pickupTime: { type: Date, required: true }
+    pickupTime: { type: Date, required: true },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
 });
 
 export default mongoose.model("Order", orderSchema);
